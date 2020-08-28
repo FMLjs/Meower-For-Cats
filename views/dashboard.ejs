@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="nav-page">
+        <h1 class="mt-4">Dashboard</h1>
+        <p>Here you see meows of all cats!</p>
+    </div>
+    <div class="search">
+        <%- include('search') %>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="nav">
+        <%- include('nav') %>
+    </div>
+    <div class="menu">
+        <main>
+            <form action="/newmeow" class="meow-form" method="POST">
+                <textarea style="width: 100%; max-width: 100%;" class="what-is-meowing-on" type="text" name="content"
+                    id="content" placeholder="What Is Meowing On?"></textarea> <br>
+                <button class="button-primary">Meow! 😻</button>
+            </form>
+            <div class="meows">
+                <% allMeows.forEach((meow)=>{  %>
+                <div>
+                    <a href="/profile/<%=meow.name %>">
+                        <h3><%=meow.name %></h3>
+                    </a>
+                    <p><%=meow.content %></p>
+                    <small><%=meow.created %></small> <br>
+                    <a href="/commentMeow/<%=meow.name %>&<%=meow.content %>">
+                        <i class="fas fa-comments"></i>
+                    </a>
+                </div>
+                <% }) %>
+            </div>
+            <%- include('partials/messages'); %>
+        </main>
+    </div>
+</div>

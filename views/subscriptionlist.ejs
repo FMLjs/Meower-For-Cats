@@ -1,0 +1,24 @@
+<h1 class="mt-4"><%=mode %> list</h1>
+<p>Here you see <%=mode %> list!</p>
+<div class="search">
+    <%- include('search') %>
+</div>
+<div class="wrapper">
+    <div class="nav">
+        <%- include('nav') %>
+    </div>
+    <div class="menu">
+        <main>
+            <div class="meows">
+                <% subs.forEach((sub)=>{  %>
+                <div>
+                    <a href="/profile/<%=sub.name %>">
+                        <h4><%=sub.name %></h4>
+                    </a>
+                </div>
+                <% }) %>
+            </div>
+        </main>
+    </div>
+    <%- include('partials/messages'); %>
+</div>

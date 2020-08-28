@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "name": "meower-db",
+    "builds": [{
+        "src": "./index.js",
+        "use": "@now/node-server"
+      }],
+    "env": {
+        "MONGO_URI": "@meower-db"
+    },
+    "routes": [
+        {
+            "src": "/.*",
+            "dest": "index.js"
+        }
+    ]
+}

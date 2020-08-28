@@ -1,0 +1,76 @@
+<h1 class="mt-4">Home</h1>
+<div class="search">
+    <%- include('search') %>
+</div>
+    <div class="profile-header">
+        <div>
+            <p class="lead mb-3">Welcome <span id="user-name"><%= name %></span></p>
+            <p>Here you see all your meows!</p>
+        </div>
+        <div class="descr">
+            Description
+            <p class="lead mb-3"><a herf="javascript:void(0)"
+                    onclick="toggle_visibility('contact-popup');"><%= description %></a></p>
+        </div>
+        <!-- Modal popup -->
+        <div class="popup-position" id="contact-popup">
+            <div class="popup-wrapper">
+                <div id="popup-container">
+                    <form action="/changedescription" method="POST">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" name="description" id="description"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary btn-block"
+                                style="background-color: #5ED4E5;">Submit</button>
+                            <p><a herf="javascript:void(0)" onclick="toggle_visibility('contact-popup');">Close
+                                    Popup</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <br>
+    <div class="wrapper">
+        <div class="nav">
+            <%- include('nav') %>
+        </div>
+        <div class="menu">
+            <main>
+                <form action="/newmeow" class="meow-form" method="POST">
+                    <textarea style="width: 100%; max-width: 100%;" class="what-is-meowing-on" type="text"
+                        name="content" id="content" placeholder="What Is Meowing On?"></textarea> <br>
+                    <button class="button-primary">Meow! 😻</button>
+                </form>
+                <main>
+                    <div class="meows">
+                        <% allMeows.meows.forEach((meow)=>{  %>
+                        <div>
+                            <h3><%=name %></h3>
+                            <p><%=meow.content %></p>
+                            <small><%=meow.created %></small><br>
+                            <a href="/commentMeow/<%=name %>&<%=meow.content %>">
+                                <i class="fas fa-comments"></i>
+                            </a>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <%- include('partials/messages'); %>
+                </main>
+            </main>
+        </div>
+    </div>
+
+<script>
+    function toggle_visibility(id) {
+        var e = document.getElementById(id);
+
+        if (e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

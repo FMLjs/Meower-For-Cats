@@ -1,0 +1,44 @@
+<h1 class="mt-4">Dashboard</h1>
+<div class="search">
+    <%- include('search') %>
+</div>
+    <div class="profile-header">
+        <div class="prof">
+            <form action="/<%=subscription.toLowerCase() %>/<%=name%>">
+                <p class="lead mb-3"><span id="user-name"><%=name %></span>
+                    <% if (self) { %>
+                    <button class="btn btn-secondary subscribe"> <%=subscription %></button>
+                    <% } %>
+                </p>
+            </form><br>
+        </div>
+        <div class="descr">
+            Description
+            <p class="lead mb-3"><%= description %></p>
+        </div>
+    </div> <br>
+    <div class=" wrapper">
+        <div class="nav">
+            <%- include('nav') %>
+        </div>
+        <div class="menu">
+            <div class="meows">
+                <main>
+                    <div class="meows">
+                        <% allMeows.meows.forEach((meow)=>{  %>
+                        <div>
+                            <a href="/profile/<%=name %>">
+                                <h3><%=name %></h3>
+                            </a>
+                            <p><%=meow.content %></p>
+                            <small><%=meow.created %></small> <br>
+                            <a href="/commentMeow/<%=name %>&<%=meow.content %>">
+                                <i class="fas fa-comments"></i>
+                            </a>
+                        </div>
+                        <% }) %>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>

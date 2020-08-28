@@ -1,0 +1,37 @@
+<h1 class="mt-4" style="margin-bottom: 40px;">Comment section</h1>
+<div class="wrapper">
+    <div class="nav">
+        <%- include('nav') %> 
+    </div>
+    <div class="menu">
+        <div class="meows">
+            <div>
+                <h3><%=name %></h3> <br>
+                <p><%=content %></p>
+                <small><%=created %></small> <br>
+            </div>
+        </div>
+        <div class="meowents">
+                <% comments.forEach((coms)=>{  %>
+                <div>
+                    <a href="/profile/<%=coms.name %>">
+                        <h5><%=coms.name %></h5>
+                    </a>
+                    <p><%=coms.comment %></p>
+                    <small><%=coms.created %></small> <br>
+                </div>
+                <% }) %>
+        </div>
+        <div class="comment">
+            <form action="/commentMeow/<%=name %>&<%=content %>" class="meow-form" method="POST">
+                <textarea style="width: 100%; max-width: 100%;" class="what-is-meowing-on" type="text" name="content"
+                    id="content" placeholder="Meow.." required></textarea> <br>
+                <button class="button-primary">Meow! 😼 </button>
+            </form>
+    
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,39 @@
+<h1 class="mt-4">Subscriptions</h1>
+<p>Here you see all your subscription meows! </p>
+<div class="search">
+    <%- include('search') %>
+</div>
+<div class="subs-nav">
+    <div>
+        <a href="/subscriptionlist/subscriptions"><i class="fas fa-users"> <%=subscriptionsLen %>
+                subscriptions</i></a></i>
+    </div>
+    <div>
+        <a href="/subscriptionlist/subscribers"><i class="fas fa-user-check"> <%=subscribersLen %>
+                subscribers</i></a></i>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="nav">
+        <%- include('nav') %>
+    </div>
+    <div class="menu">
+        <main>
+            <div class="meows">
+                <% allMeows.forEach((meow)=>{  %>
+                <div>
+                    <a href="/profile/<%=meow.name %>">
+                        <h3><%=meow.name %></h3>
+                    </a>
+                    <p><%=meow.meows.content %></p>
+                    <small><%=meow.meows.created %></small><br>
+                    <a href="/commentMeow/<%=meow.name %>&<%=meow.meows.content %>">
+                        <i class="fas fa-comments"></i>
+                    </a>
+                </div>
+                <% }) %>
+            </div>
+        </main>
+    </div>
+    <%- include('partials/messages'); %>
+</div>
