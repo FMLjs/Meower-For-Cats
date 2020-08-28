@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const monk = require('monk');
 const rateLimit = require('express-rate-limit');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
@@ -30,7 +29,7 @@ app.use((error, req, res, next) => {
 });
 
 //DB
-const db = 'mongodb://127.0.0.1:27017/meower' || process.env.MONGO_URI;
+const db = 'mongodb://127.0.0.1:27017/meower' || process.env.MONGODB_URI;
 // process.env.MONGODB_URI
 mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log('Connected to db'))
