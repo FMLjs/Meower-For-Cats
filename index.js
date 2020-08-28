@@ -71,6 +71,6 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
 app.use('/public', express.static('public'));
-app.use('/users', require('../server/routes/user'));
-app.use('/', require('../server/routes/meows.js'));
+app.use('/users', require('./routes/user'));
+app.use('/', require('./routes/meows'));
 
