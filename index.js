@@ -11,7 +11,7 @@ const passport = require('passport');
 const app = express();
 
 //Passport config
-require('../server/config/passport')(passport);
+require('./config/passport')(passport);
 
 app.use(cors());
 app.use(express.json());
